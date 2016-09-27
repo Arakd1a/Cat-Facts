@@ -12,8 +12,9 @@ import java.util.Scanner;
 public class CatFacts {
 
  
-    public static void main(String[] args) {
-     int emailFrequency = 0;
+    public static void main(String[] args) throws InterruptedException {
+     boolean senderSwitch = true;   
+     int emailFrequency = 2 * 1000; // PAUSE IN SECS
      String emailRecipient = "";
      String from = "mr.whiskers@catfacts.com";
      String fact = "";
@@ -42,27 +43,31 @@ public class CatFacts {
      catGoodbye.add("Goodbye");
      catGoodbye.add("Meow You Later");
      catGoodbye.add("Goodbye");
+       while (senderSwitch){
+                int randomSubject = (int )(Math.random() * 5); //Keep the numbers to the size of the Array.
+                int randomGreeting = (int )(Math.random() * 5); 
+                int randomFact = (int )(Math.random() * 5); 
+                int randomGoodbye = (int )(Math.random() * 5); 
 
-     int randomSubject = (int )(Math.random() * 5);
-     int randomGreeting = (int )(Math.random() * 5); 
-     int randomFact = (int )(Math.random() * 5); 
-     int randomGoodbye = (int )(Math.random() * 5); 
-     
-   /*  System.out.println
-        ("Greeting Number: " +randomGreeting + " " +
-         "Fact Number " + randomFact + " " + 
-         "Goodbye Number " + randomGoodbye);
-     
-   */
+              /*  System.out.println
+                   ("Greeting Number: " +randomGreeting + " " +
+                    "Fact Number " + randomFact + " " + 
+                    "Goodbye Number " + randomGoodbye);
+
+              */
+
+              subject = emailSubject.get(randomSubject);
+              fact = catGreeting.get(randomGreeting) + " " + catFact.get(randomFact) + " " + catGoodbye.get(randomGoodbye);
+
+
+              System.out.println ("FROM: " + from);
+              System.out.println ("EMAIL SUBJECT LINE: " + subject);
+              System.out.println ("\n");
+              System.out.println ("EMAIL CONTENTS: " + fact);
+              
+              Thread.sleep(emailFrequency);
    
-   subject = emailSubject.get(randomSubject);
-   fact = catGreeting.get(randomGreeting) + " " + catFact.get(randomFact) + " " + catGoodbye.get(randomGoodbye);
-   
-   
-   System.out.println ("FROM: " + from);
-   System.out.println ("EMAIL SUBJECT LINE: " + subject);
-   System.out.println ("\n");
-   System.out.println ("EMAIL CONTENTS: " + fact);
+       }
     }
     
 }
