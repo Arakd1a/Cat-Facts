@@ -21,16 +21,15 @@ import java.util.logging.Logger;
 public class CatFacts {
 
    
-    public static void main(String[] args ) {
+    public static void main(String[] args ) {    
     boolean factLoop = true;
     int factsSent = 0;
-    int factSleep = 2 * 1000;
+    int factSleep = 1 * 1000;
     CatFacts cat = new CatFacts();      
     while(factLoop){
     String fact = cat.getFact();
     printFact(fact);    
-    factsSent++;
-    System.out.println("Facts sent: " + factsSent);     
+    factsSent++;   
         try {
             Thread.sleep(factSleep);
         } catch (InterruptedException ex) {
@@ -58,15 +57,15 @@ public class CatFacts {
       arraySize++;
     }
     inFile1.close();
-   System.out.println("Facts compiled successfully");
-   System.out.println("Number of facts compiled:" + arraySize);
-
    randomFactNumber = (int )(Math.random() * arraySize);
    fact = catFactsArray.get(randomFactNumber); 
     return fact;
 }
     
-  public static void printFact(String fact){  
+  public static void printFact(String fact){
+  int randomFactNumber = 0;
+  randomFactNumber = (int )(Math.random() * 999);
+  System.out.println("Fact number:" + randomFactNumber);
   System.out.println(fact);
   }
   
